@@ -1,0 +1,25 @@
+<html>
+<head>
+</head>
+
+<body>
+    <script type="text/javascript">
+        // Add a custom property to String object via prototype property:
+        String.prototype.language = "English";
+
+        // Create a new String object:
+        var myString = new String("This is my string");
+        
+        document.write("myString is : " + myString + "<br>");
+
+        // Get properties of constructor and length:
+        document.write("constructor is : " + myString.constructor + "<br>");
+        document.write("lengh is : " + myString.length + "<br>");
+
+        // Get custom property:
+        document.write("prototype.language is : " + myString.language + "<br");
+        
+    </script>
+</body>
+</html>
+

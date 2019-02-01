@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            <!--
+                function sayHello() {
+                    alert("Hello World! from sayHello() in head");
+                }
+            //-->
+        </script>
+
+        <script type="text/javascript" src="test.js">
+        </script>
+    </head>
+
+    <body>
+        <pre>
+        <script language="javascript" type="text/javascript">
+            <!-- This is a HTML-like opening comment line
+
+            // This is a C++-like comment line.
+
+            /*
+             * This is a C-like comment block of multiple lines
+             */
+
+            document.writeln("Hello World! from JavaScript in body");
+
+            var name = "Ali";
+            var money;
+            money = 2000.50;
+            document.writeln(name);
+            document.writeln(money);
+
+            var nameType = typeof name;
+            document.writeln(nameType);
+
+            //--> This can't be recognized as a HTML closing comment line.
+        </script>
+        </pre>
+
+        <noscript>
+            Sorry...JavaScript is needed to go ahead.
+        </noscript>
+
+        <input type="button" onclick="sayHello()" value="Say Hello" />
+
+        <input type="button" onclick="sayHelloTest()" value="Say Hello Test" />
+    </body>
+</html>
+

@@ -1,0 +1,314 @@
+echo " {\"app\":\"first_app\", \"command\":\"firstCommand\", \"args\":{\"myArg\":\"This is a string\"}} " | nc -w1 -u 127.0.0.1 32000
+
+
+pacio
+=====
+
+echo " {\"app\":\"pacio\", \"command\":\"setLogLevel\", \"args\":{\"pacLogLevel\":\"pac_level_debug\"}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"pacio\", \"command\":\"setLogLevel\", \"args\":{\"pacLogLevel\":\"pac_level_warn\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"pacio\", \"command\":\"sendMsg\", \"args\":{\"cardHash\":\"�OD�#ꄉ�:�!�^m��jV���V�03��Ç�PAY\"}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"pacio\", \"command\":\"sendMsg\", \"args\":{\"cardHash\":\"�OD�\u001Fꄉ�:�\u000F!�^m��jV���V�03��Ç�PAY\"}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+seatServices
+============
+
+echo " {\"app\":\"seatServices\", \"command\":\"getSeatInfo\"} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+
+anc
+===
+
+echo " {\"app\":\"anc\", \"command\":\"getStatus\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"anc\", \"command\":\"fetchStatus\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"anc\", \"command\":\"setState\", \"args\":{\"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+epg
+===
+
+echo " {\"app\":\"epg\", \"command\":\"startExtv\", \"args\":{\"serverListenerPort\":50766, \"epgDataRequestPostUrl\":\"http://extv-mgr-server:50100/extv\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"epg\", \"command\":\"postExtvMessage\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"epg\", \"command\":\"stopExtv\"} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+
+payment
+=======
+
+echo " {\"app\":\"payment\", \"command\":\"makePaymentCC\", \"args\":{\"amount\":\"12.34\", \"orderId\":\"21\", \"currency\":\"USD\", \"application\":\"HOSP\", \"merchant_id\":\"MRH\", \"seatNum\":\"25A\", \"payType\":\"Normal\", \"orderMetadata\":\"xyz\", \"strKeyName\":\"PAY\", \"validationGroup\":\"SHOP\", \"detect\":\"IS_AUTO\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"cancelPaymentCC\" }  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"getPayHistory\", \"args\":{\"orderId\":\"21\", \"application\":\"HOSP\", \"seatNum\":\"25A\", \"payId\":\"2525-8D5B8A8A-20\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"getPayHistory\", \"args\":{}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"getPayHistory\", \"args\":{\"orderId\":\"21\", \"application\":\"HOSP\", \"seatNum\":\"25A\", \"payId\":\"2525-8D5B8A8A-20\", \"apiName\":\"payGetHistory\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+
+echo " {\"app\":\"payment\", \"command\":\"createTabCC\", \"args\":{\"orderId\":\"21\", \"currency\":\"USD\", \"application\":\"HOSP\", \"merchant_id\":\"MRH\", \"seatNum\":\"25A\", \"orderMetadata\":\"xyz\", \"strKeyName\":\"PAY\", \"validationGroup\":\"SHOP\", \"detect\":\"IS_AUTO\"}}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"addToTab\", \"args\":{\"payId\":\"PAY21\", \"amount\":\"12.34\", \"currency\":\"USD\", \"orderId\":\"21\", \"application\":\"HOSP\", \"merchant_id\":\"MRH\", \"seatNum\":\"25A\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"closeTab\", \"args\":{\"payId\":\"PAY21\", \"seatNum\":\"25A\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"setCardholderInfo\", \"args\":{\"payId\":\"PAY21\", \"field\":\"email\", \"val\":\"abc@host.com\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"getCardholderInfo\", \"args\":{\"payId\":\"PAY21\", \"field\":\"email\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"setMetadata\", \"args\":{\"payId\":\"PAY21\", \"key\":\"email\", \"val\":\"abc@host.com\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"payment\", \"command\":\"getMetadata\", \"args\":{\"payId\":\"PAY21\", \"key\":\"email\"}}  " | nc -w1 -u 127.0.0.1 32000
+
+
+
+
+upc
+===
+
+echo " {\"app\":\"upc\", \"command\":\"setProperties\", \"args\":{\"paymentType\":\"MagStripePayment\", \"transactionType\":\"Charge\", \"fulfillmentType\":\"onboard\", \"fulfillmentDelay\":\"pending\", \"orderId\":\"order01\", \"applicationId\":\"SHOP\", \"userId\":\"3B\", \"crewId\":\"crew01\", \"currency\":\"USD\", \"amount\":\"123.45\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"upc\", \"command\":\"setAction\", \"args\":{\"actionName\":\"createUpcObject\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"upc\", \"command\":\"setAction\", \"args\":{\"actionName\":\"authorize\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"upc\", \"command\":\"setAction\", \"args\":{\"actionName\":\"proceed\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"upc\", \"command\":\"setAction\", \"args\":{\"actionName\":\"destroyUpcObject\"}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+bookmark
+========
+
+echo " {\"app\":\"bookmark\", \"command\":\"setBookmark\", \"args\":{\"bookmark_data\":\"dummy bookmark data\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"bookmark\", \"command\":\"getBookmark\"} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+window_dimmer
+=============
+
+echo " {\"app\":\"window_dimmer\", \"command\":\"getWindowInfo\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"window_dimmer\", \"command\":\"setLevel\", \"args\":{\"windowId\":1, \"level\":5}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+window_shader
+=============
+
+echo " {\"app\":\"window_shader\", \"command\":\"setPercentage\", \"args\":{\"percent\":51, \"Seat_Condition\":3, \"seat\":0}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"window_shader\", \"command\":\"setAction\", \"args\":{\"action\":102, \"Seat_Condition\":3, \"seat\":0}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+seat_settings
+=============
+
+echo " {\"app\":\"seat_settings\", \"command\":\"setInteractiveState\", \"args\":{\"state\":2}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":"\seat_settings\", \"command\":\"setLcdmType\", \"args\":{\"lcdm\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"seat_settings\", \"command\":\"setAccessibilityState\", \"args\":{\"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"seat_settings\", \"command\":\"setFallbackState\", \"args\":{\"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"seat_settings\", \"command\":\"setPedState\", \"args\":{\"port\":50186, \"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"seat_settings\", \"command\":\"setUsbPowerState\", \"args\":{\"port\":1, \"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"seat_settings\", \"command\":\"setLocalReadingLight\", \"args\":{\"state\":3}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"seat_settings\", \"command\":\"setMultiReadingLight\", \"args\":{\"reading_light_id\":1, \"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+dock_control
+============
+
+echo " {\"app\":\"dock_control\", \"command\":\"setWirelessState\", \"args\":{\"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"dock_control\", \"command\":\"setLatchState\", \"args\":{\"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+sensors
+=======
+
+echo " {\"app\":\"sensors\", \"command\":\"setProximitySensorState\", \"args\":{\"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+audio_control
+=============
+
+echo " {\"app\":\"audio_control\", \"command\":\"setBassLevel\", \"args\":{\"audio_out\":0, \"level\":50}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setTrebleLevel\", \"args\":{\"audio_out\":0, \"level\":50}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setVoiceEnhancement\", \"args\":{\"audio_out\":0, \"level\":5}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setSurround\", \"args\":{\"audio_out\":0, \"level\":5}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setHBass\", \"args\":{\"audio_out\":0, \"level\":5}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"audio_control\", \"command\":\"setNoiseCancellation\", \"args\":{\"value\":\"on\"}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setOpenEar\", \"args\":{\"value\":\"on\"}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"set3DPreset\", \"args\":{\"value\":\"preset1\"}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setEqualizer\", \"args\":{\"value\":\"jazz\"}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setVolume\", \"args\":{\"level\":50}} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setVolumeUp\"} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"setVolumeDown\"} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"mute\"} " | nc -w1 -u 127.0.0.1 32000
+echo " {\"app\":\"audio_control\", \"command\":\"unmute\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"audio_control\", \"command\":\"setHeadSetForVideo\", \"args\":{\"headsetMask\":1, \"connection\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+handset_control
+=============
+
+echo " {\"app\":\"handset_control\", \"command\":\"setBacklight\", \"args\":{\"backlightType\":1, \"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+appGateway
+==========
+
+echo " {\"app\":\"appGateway\", \"command\":\"registerApp\", \"args\":{\"AppId\":\"003\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"appGateway\", \"command\":\"sendMessage\", \"args\":{\"payload\":\"sendSeats/|5B,5C/|003/|some text message\"}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+messaging_service
+=================
+
+echo " {\"app\":\"messaging_service\", \"command\":\"registerApp\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"login\", \"args\":{\"payId\":\"PAY_ID\", \"cardHash\":\"###\", \"payType\":2}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"logout\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"setUserInfo\", \"args\":{\"userName\":\"John\", \"userAddress\":\"john@abc.com\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"getUserInfo\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"sendMessage\", \"args\":{\"recipient\":\"steve@xyz.com\", \"ccAddress\":\"kevin@abc.com\", \"senderAddress\":\"john@abc.com\", \"from\":\"John\", \"subject\":\"RE: something\", \"messageData\":\"This is the body of the message.\"}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"resetSeat\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"queryStatus\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"queryPrices\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"queryHeaders\", \"args\":{\"begin\":0, \"count\":10}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"messaging_service\", \"command\":\"queryContent\", \"args\":{\"messageId\":\"1\"}} " | nc -w1 -u 127.0.0.1 32000
+
+
+
+ecu configure
+===
+
+echo " {\"app\":\"ecu\", \"command\":\"configureSeat\", \"args\":{\"core_service_ip\":\"localhost\", \"seat_index\":0, \"seat_row\":3, \"seat_letter\":\"B\", \"slrud_client_id\":6}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setPower\", \"args\":{\"power\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setOutlet\", \"args\":{\"state\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+/*
+- "debug_level": is the debugging level used by icore to debug ecu. 0 - Emergency; 2 - Alert; 3 - Critical; 4 - Error; 5 - Warning; 6 - Notice; 7 - Info; 8 - Verbose; 9 - Bytes.
+*/
+
+echo " {\"app\":\"ecu\", \"command\":\"setDebugLevel\", \"args\":{\"debug_level\":7}} " | nc -w1 -u 127.0.0.1 32000
+
+ecu position
+===
+
+echo " {\"app\":\"ecu\", \"command\":\"getSeatPosition\"} " | nc -w1 -u 127.0.0.1 32000
+
+/*
+- "setting": 0 - Taxi Take-off; 1 - Bed; 2 - Upright; 3 - Z; 4 - Dine; 5 - Recall Saved Position 1; 6 - Recall Saved Position 2; 7 - Bed Lounge; 8 - Invalid.
+*/
+
+echo " {\"app\":\"ecu\", \"command\":\"setSeatPredefinedPosition\", \"args\":{\"setting\":0}} " | nc -w1 -u 127.0.0.1 32000
+
+/*
+- "control_heartbeat_period": heartbeat period in milliseconds. This should be set to arg "slrud_keep_alive_interval" in command "configureSeat".
+- "control_function_group": 1 - Seat Position; 2 - Seat Suite; 3 - Seat Massage.
+- "control_element": See below for more details.
+- "control_operation": 0 - Increment; 1 - Decrement; 2 - Stop.
+ 
+"control_element" for Seat Position:
+256 - First (not to be used); 257 - Recliner; 258 - Head Rest; 259 - Leg Rest; 260 - Foot Rest; 261 - Seat Pan; 262 - Privacy; 263 - Doors; 264 - Tracking; 265 - Lumbar 1; 266 - Lumbar 2; 267 - Bull Nose; 268 - Arms; 269 - Divider 1 50 %; 270 - Divider 2 50 %; 271 - Divider 2; 272 - Predefined Takeoff Position; 273 - Predefined Bed Position; 274 - Predefined Upright Position; 275 - Predefined Seat Z Position; 276 - Predefined Dine Position; 277 - Predefined Recall Position 1; 278 - Predefined Recall Position 2; 279 - Shoulder Tilt; 280 - Seat Pan Articulation; 281 - Lateral Tracking; 282 - Lumbar 3 or Head Rest Lumbar; 283 - Predefined Bed Lounge Position; 284 - Upper and Lower Lumbar; 285 - Last (not to be used).
+ 
+"control_element" for Seat Suite:
+512 - First (not to be used); 513 - Lumbar On; 514 - Lumbar Off; 515 - Lumbar Deflate; 516 - Do-Not-Disturb Light On; 517 - Do-Not-Disturb Light Off; 518 - Attendant On; 519 - Attendant Off; 520 - Desk Light Setting; 521 - Forward Reading Light Setting; 522 - Forward Reading Light Off; 523 - AFT Reading Light Setting; 524 - AFT Reading Light Off; 525 - Clear Seat Position; 526 - Save Seat Position 1; 527 - Save Seat Position 2; 528 - Mood Light On; 529 - Mood Light Off; 530 - Door Divider Lock On; 531 - Door Divider Lock Off; 532 - Carper Light Black Blue; 533 - Carpet Light Light Blue; 534 - Divider 1 Lock On; 535 - Divider 2 Lock Off; 536 - Privacy Divider 1 Lock On; 537 - Privacy Divider 1 Lock Off; 538 - Privacy 2 Lock On; 539 - Privacy Divider 2 Lock Off; 540 - Release Swivel and Tracking; 541 - Seat Normalization; 542 - Table Lamp On; 543 - Table Lamp Off; 544 - Ambient Lamp On; 545 - Ambient Light Off; 546 - Leg Rest Fully Up; 547 - Leg Rest Fully Down; 548 - AFT Reading Light Toggle; 549 - Last (not to be used).
+ 
+"control_element" for Seat Massage:
+768 - First (not to be used); 769 - Timer Off; 770 - Timer 15; 771 - Timer 30; 772 - Timer Reset; 773 - Timer Default; 774 - Heater; 775 - Zone 1; 776 - Zone 2; 777 - Zone 3; 778 - Zone 4; 779 - Zone 5; 780 - Mode Normal; 781 - Mode Pulse; 782 - Mode Wave; 783 - Mode Zigzag; 784 - Speed; 785 - Intensity; 786 - Last (not to be used).
+*/
+
+echo " {\"app\":\"ecu\", \"command\":\"setContinuousMovement\", \"args\":{\"control_heartbeat_period\":500, \"control_function_group\":1, \"control_element\":258, \"control_operation\":0}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMovement\", \"args\":{\"control_function_group\":2, \"control_element\":516, \"control_operation\":0}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setContinuousMovementHeartbeat\", \"args\":{\"control_heartbeat_period\":500}} " | nc -w1 -u 127.0.0.1 32000
+
+ecu suite
+===
+
+echo " {\"app\":\"ecu\", \"command\":\"getSuiteStatus\"} " | nc -w1 -u 127.0.0.1 32000
+
+/*
+- "function": 0 - First (not to be used); 1 - Turn Lumbar On; 2 - Turn Lumbar Off; 3 - Deflate Lumbar; 4 - Turn Do-Not-Disturb Light On; 5 - Turn Do-Not-Disturb Light Off; 6 - Turn Attendant Light On; 7 - Turn Attendant Light Off; 8 - Change Desk Light; 9 - Turn PSS Light On; 10 - Turn PSS Light Off; 11 - Turn Main ECU Reading Light On; 12 - Turn Main ECU Reading Light Off; 13 - Clear All Seat Positions; 14 - Clear Saved Seat Position 1; 15 - Clear Saved Seat Position 2; 16 - Turn Mood Lights On; 17 - Turn Mood Lights Off; 18 - Turn Door Lock On; 19 - Turn Central/Left Privacy Divider Lock On; 20 - Turn Door Lock Off; 21 - Turn Central/Left Privacy Divider Lock Off; 22 - Switch Carpet Lights to Dark Blue; 23 - Switch Carpet Lights to Light Blue; 24 - Switch Carpet Lights to White; 25 - Turn Right Divider Lock On; 26 - Turn Right Divider Lock Off; 27 - Turn Central/Left Privacy Divider Lock On from CT with Override Set; 28 - Turn Central/Left Privacy Divider Lock Off from CT with Override Set; 29 - Turn Right Divider Lock On from CT with Override Set; 30 - Turn Right Divider Lock Off from CT with Override Set; 31 - Release Swivel and Tracking; 32 - Set Default Normalization State; 33 - Turn Table Lamp On; 34 - Turn Table Lamp Off; 35 - Turn Ambient Light On; 36 - Turn Ambient Light Off; 37 - Make Leg Rest Fully Up; 38 - Make Leg Rest Fully Off; 39 - Toggle ECU Main Reading Light; 40 - Last (not to be used).
+*/
+
+echo " {\"app\":\"ecu\", \"command\":\"setSuiteFunction\", \"args\":{\"function\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+ecu massage
+===
+
+echo " {\"app\":\"ecu\", \"command\":\"getMassageStatus\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMassageTimer\", \"args\":{\"timer\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMassageHeater\", \"args\":{\"heater\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMassageZone\", \"args\":{\"zone\":1, \"enable\":true}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMassageMode\", \"args\":{\"mode\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMassageSpeed\", \"args\":{\"speed\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMassageIntensity\", \"args\":{\"intensity\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+ecu lighting 
+===
+
+echo " {\"app\":\"ecu\", \"command\":\"getLightStatus\"} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setMultipleLights\", \"args\":{\"Lights\":[[1, 51, 0, 0], [2, 52, 0, 0]]}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"saveCustomScene\", \"args\":{\"Scene\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setSeatIndividualLighting\", \"args\":{\"LightNumber\":1, \"DimLevel\":51}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setSeatLightingScene\", \"args\":{\"Scene\":1}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"loadCustomScene\", \"args\":{\"Scene\":1, \"Lights\":[[1, 51, 0, 0], [2, 52, 0, 0]]}} " | nc -w1 -u 127.0.0.1 32000
+
+echo " {\"app\":\"ecu\", \"command\":\"setSeatIndividualLightingPreset\", \"args\":{\"LightNumber\":1, \"preset\":1}} " | nc -w1 -u 127.0.0.1 32000
+
