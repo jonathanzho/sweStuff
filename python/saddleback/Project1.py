@@ -15,7 +15,7 @@ for i in range(5):
 
     purchaseTotalNoCommission = numStocksPurchased * stockPurchasePrice
     purchaseCommission =  purchaseTotalNoCommission * 0.03
-    purchaseTotal = purchaseTotalNoCommission + purchaseCommission
+a    purchaseTotal = purchaseTotalNoCommission + purchaseCommission
     saleTotalNoCommission = numStocksSold * stockSalePrice
     saleCommission = saleTotalNoCommission * 0.03
     saleTotal = saleTotalNoCommission - saleCommission
