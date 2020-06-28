@@ -6,17 +6,33 @@ import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.cert.Certificate;
 import java.util.Base64;
+import java.util.Scanner;
 
 public class KeyPairFromKeyStore {
   public static void main(String[] argv) throws Exception {
-    FileInputStream is = new FileInputStream("test.keystore");
+    Scanner reader = new Scanner(System.in);
+    
+    System.out.println("Enter keystore file name: ");
+    String keystoreFileName = reader.next();
+
+    FileInputStream is = new FileInputStream(keystoreFileName);
 
     KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
-    keystore.load(is, "test-keystore-password".toCharArray());
 
-    String alias = "test-alias";
+    System.out.println("Enter keystore password: ");
+    String keystorePassword = reader.next();
 
-    Key privateKey = keystore.getKey(alias, "test-alias-password".toCharArray());
+    keystore.load(is, keystorePassword.toCharArray());
+
+    System.out.println("Enter alias: ");
+    String alias = reader.next();
+
+    System.out.println("Enter alias password: ");
+    String aliasPassword = reader.next();
+
+    reader.close();
+
+    Key privateKey = keystore.getKey(alias, aliasPassword.toCharArray());
     System.out.println("private key algorithm=[" + privateKey.getAlgorithm() + "]");
     System.out.println("private key format=[" + privateKey.getFormat() + "]");
 
