@@ -30,11 +30,12 @@ def main():
 def displayEmployees(employees):
     count = 0;
 
-    print('\t' + 'No.' +
-          '\t' + 'Name' +
-          '\t' + 'ID Number' +
-          '\t' + 'Department' +
-          '\t' + 'Job Title')
+    print('No.'.ljust(10) +
+          'Name'.ljust(20) +
+          'ID Number'.ljust(10) +
+          'Department'.ljust(20) +
+          'Job Title'.ljust(20))
+    print('-'*80)
     
     for e in employees:
         count += 1
@@ -44,11 +45,11 @@ def displayEmployees(employees):
         department = e.department
         jobTitle = e.jobTitle
 
-        print('\t' + str(count) +
-              '\t' + name +
-              '\t' + str(idNumber) +
-              '\t\t' + department +
-              '\t\t' + jobTitle)
+        print(str(count).ljust(10) +
+              name.ljust(20) +
+              str(idNumber).ljust(10) +
+              department.ljust(20) +
+              jobTitle.ljust(20))
 
 main()
         
