@@ -64,6 +64,39 @@ class Developer(Employee, Equipment):
                                           self.equipType, self.equipOwner,
                                           self.progLanguage)
 
+# 5============================================================================
+# Data encapsulation
+
+class Person:
+    def __init__(self, name, age, weight):
+        # public data:
+        self.name = name
+        # private data (using accessers)
+        self._age = age
+        # private data (using property)
+        self._weight = weight
+
+    def get_age(self):
+        return self._age
+
+    def set_age(self, age):
+        self._age = age
+
+    def delete_age(self):
+        del self._age
+        
+    @property
+    def weight(self):
+        return self._weight
+
+    @weight.setter
+    def weight(self, weight):
+        self._weight = weight
+
+    @weight.deleter
+    def weight(self):
+        del self._weight
+
 # =============================================================================
 # 1============================================================================
 # Test class DoNothing
@@ -97,4 +130,27 @@ developer1 = Developer('Mike Wang', 'mwang@abc.com', 'Senior Developer',
                        'Python')
 print(developer1.get_info())
 print(Employee.count)
+
+# 5=============================================================================
+# Test data encapsulation
+
+# Initial values:
+person1 = Person('Mike', 17, 100.0)
+print(person1.name, person1.get_age(), person1.weight)
+
+# Change values:
+person1.name = 'Michael'
+person1.set_age(18)
+person1.age = 19 # This will be ignored !!!
+person1.weight = 110.0
+print(person1.name, person1.get_age(), person1.weight)
+
+# Delete variables:
+del person1.name
+person1.delete_age()
+del person1.weight
+# AttributionError:
+#print(person1.name, person1.get_age(), person1.weight)
+
+
 
