@@ -1,8 +1,5 @@
 import tkinter as tk
 
-def handle_button1_click(event):
-    print('button1 was clicked!')
-
 class MainApplication(tk.Frame):
     def __init__(self, parent):
         tk.Frame.__init__(self, parent)
@@ -13,18 +10,20 @@ class MainApplication(tk.Frame):
 
         button1 = tk.Button(frame,
             text='Click me!',
-            width=20,
-            height=10,
-            bg='white',
-            fg='red')
+            fg='red',
+            highlightbackground='green')
         button1.pack()
-        button1.bind('<Button-1>', handle_button1_click)
+        button1.bind('<Button-1>', self.handle_button1_click)
+
+    def handle_button1_click(self, event):
+        print('button1 was clicked!')
 
 def main():
     root = tk.Tk()
+    root.geometry('400x200')
 
     app = MainApplication(root)
-    app.pack(side='top', fill='both', expand=True)
+    app.pack()
 
     root.mainloop()
 
