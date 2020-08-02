@@ -2,6 +2,7 @@
 # CodeLab6
 # ========
 
+import os
 import sqlite3 as lite
 import sys
 from contextlib import closing
@@ -38,6 +39,13 @@ class Employee:
            con.commit()
 
 def main():
+    # Remove db if it exists
+    try:
+        os.remove('CIMP8A.db')
+    except OSError:
+        pass
+
+    # Enter employees and save them to the db:
     while True:
         name = input('Enter Name (Press return to finish): ')
         if not name:
@@ -52,7 +60,7 @@ def main():
 
         employee.insert_db()
 
-    # Read db:
+    # Read db to verify:
     con = lite.connect('CIMP8A.db')
     cur = con.cursor()
     cur.execute("SELECT * FROM Employee")
