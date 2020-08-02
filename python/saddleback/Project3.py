@@ -16,13 +16,60 @@ class MainApplication(tk.Frame):
         tk.Frame.__init__(self, parent, *args, **kwargs)
         self.parent = parent
 
-        button1 = tk.Button(parent, text='Click Me!')
-        button1.pack(side="top", fill="both", expand=True)
+        gridFrame = tk.Frame(parent)
 
+        labelName = tk.Label(gridFrame,
+                             text='Name',
+                             justify='center')
+        labelName.grid(row=0, column=0)
+
+        entryName = tk.Entry(gridFrame,
+                             bd=5)
+        entryName.grid(row=0, column=1)
+
+        labelIdNumber = tk.Label(gridFrame,
+                             text='ID Number',
+                             justify='center')
+        labelIdNumber.grid(row=1, column=0)
+
+        entryIdNumber = tk.Entry(gridFrame,
+                             bd=5)
+        entryIdNumber.grid(row=1, column=1)
+
+        labelDepartment = tk.Label(gridFrame,
+                             text='Department',
+                             justify='center')
+        labelDepartment.grid(row=2, column=0)
+
+        entryDepartment = tk.Entry(gridFrame,
+                             bd=5)
+        entryDepartment.grid(row=2, column=1)
+
+        labelJobTitle = tk.Label(gridFrame,
+                             text='Job Title',
+                             justify='center')
+        labelJobTitle.grid(row=3, column=0)
+
+        entryJobTitle = tk.Entry(gridFrame,
+                             bd=5)
+        entryJobTitle.grid(row=3, column=1)
+
+        buttonAddToFile = tk.Button(gridFrame,
+                                    borderwidth=5,
+                                    fg='red',
+                                    text='Add to File')
+        buttonAddToFile.grid(row=4, column=1)
+
+        gridFrame.pack(side='top')
 
 def main():
     root = tk.Tk()
-    app = MainApplication(root).pack(side="top", fill="both", expand=True)
+    root.geometry('400x200')
+    root.title('Employee')
+    
+    app = MainApplication(root)
+    app.pack(side="top", fill="both", expand=True)
+    
     root.mainloop()
 
 if __name__ == '__main__':
