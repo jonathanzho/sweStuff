@@ -23,20 +23,21 @@ class Employee:
     
     def insert_db(self):
         con = lite.connect('CIMP8A.db')
+        cur = con.cursor()
+        
+        cur.execute("CREATE TABLE IF NOT EXISTS Employee(Id INTEGER PRIMARY KEY, EmployeeName TEXT, EmployeeDept TEXT, JobTitle TEXT)")
 
-        with con:
-           cur = con.cursor()
-           cur.execute("CREATE TABLE IF NOT EXISTS Employee(Id INTEGER PRIMARY KEY, EmployeeName TEXT, EmployeeDept TEXT, JobTitle TEXT)")
-
-           sql = '''INSERT INTO Employee (Id, EmployeeName, EmployeeDept, JobTitle)
+        sql = '''INSERT INTO Employee (Id, EmployeeName, EmployeeDept, JobTitle)
                          VALUES (?, ?, ?, ?)'''
-           with closing(con.cursor()) as c:
-              c.execute(sql, (
-                  self.idNumber,
-                  self.name,
-                  self.department,
-                  self.jobTitle))
-           con.commit()
+        cur.execute(sql, (
+                    self.idNumber,
+                    self.name,
+                    self.department,
+                    self.jobTitle))
+        con.commit()
+
+        cur.close()
+        con.close()
 
 def main():
     # Remove db if it exists
@@ -63,9 +64,11 @@ def main():
     # Read db to verify:
     con = lite.connect('CIMP8A.db')
     cur = con.cursor()
+    
     cur.execute("SELECT * FROM Employee")
     dbData = cur.fetchall()
     print(dbData)
+    
     cur.close()
     con.close()
 
