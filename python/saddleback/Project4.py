@@ -122,12 +122,6 @@ class MainApplication(tk.Frame):
         emp = Employee(name, idNumber, department, jobTitle)
         emp.insert_file()
 
-        # Clear entry values:
-        self.entryName.delete(0, 'end')
-        self.entryIdNumber.delete(0, 'end')
-        self.entryDepartment.delete(0, 'end')
-        self.entryJobTitle.delete(0, 'end')
-
     def buttonNewData_cb(self, event):
         self.empIndex += 1
         if self.empIndex >= len(self.dbData):
